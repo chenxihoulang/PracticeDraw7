@@ -1,6 +1,9 @@
 package com.hencoder.hencoderpracticedraw7.practice;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +37,16 @@ public class Practice04PropertyValuesHolderLayout extends RelativeLayout {
         animateBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                PropertyValuesHolder valuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", 0, 1);
+                PropertyValuesHolder valuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", 0, 1);
+                PropertyValuesHolder valuesHolder3 = PropertyValuesHolder.ofFloat("alpha", 0, 1);
+
+                ObjectAnimator animator =
+                        ObjectAnimator.ofPropertyValuesHolder(view, valuesHolder1, valuesHolder2, valuesHolder3);
+                animator.setDuration(2000);
+                animator.setInterpolator(new FastOutSlowInInterpolator());
+                animator.start();
+
                 // 使用 PropertyValuesHolder.ofFloat() 来创建不同属性的动画值方案
                 // 第一个： scaleX 从 0 到 1
                 // 第二个： scaleY 从 0 到 1
